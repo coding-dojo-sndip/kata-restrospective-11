@@ -46,7 +46,6 @@ public class LexerTest {
     assertThrows(NullPointerException.class, () -> Lexer.create().tryParse(null));
   }
   
-  /*
   interface LexerFactory {
     Lexer<String> create(String regex);
   }
@@ -56,7 +55,7 @@ public class LexerTest {
         text -> Lexer.from(Pattern.compile(text)), Lexer::from //, Q6 text -> Lexer.from(List.of(text), List.of(x -> x))
         );
   }
-  
+
   @Tag("Q2") @ParameterizedTest @MethodSource("lexerFactories")
   public void testFromPatternRecognized(LexerFactory factory) {
     var lexer = factory.create("(ab*)");
@@ -109,7 +108,8 @@ public class LexerTest {
         );
   }
 
-  
+
+  /*
   @Tag("Q3") @Test
   public void testMapRecognized() {
     assertAll(
