@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 @FunctionalInterface
 interface Lexer<T> {
 
-    Optional<T> tryParse(String input);
+    Optional<T> tryParse(String text);
 
     static <T> Lexer<T> create() {
         return (String text) -> {
@@ -37,5 +37,14 @@ interface Lexer<T> {
     default <R> Lexer<R> map(Function<? super T, ? extends R> mapper) {
         Objects.requireNonNull(mapper);
         return text -> tryParse(text).map(mapper);
+    }
+
+    default Lexer<T> or(Lexer<? extends T> other) {
+        Objects.requireNonNull(other);
+        return text -> this.tryParse(text).or(() -> other.tryParse(text));
+    }
+
+    default Lexer<T> with(String regex, Function<String, ? extends T> mapper) {
+        return this.or(from(regex).map(mapper));
     }
 }

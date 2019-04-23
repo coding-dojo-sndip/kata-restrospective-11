@@ -145,7 +145,6 @@ public class LexerTest {
   }
 
 
-  /*
   @Tag("Q4") @Test
   public void testOr() {
     var lexer = Lexer.from("([0-9]+)").or(Lexer.from("([a-z_]+)"));
@@ -198,7 +197,7 @@ public class LexerTest {
     assertThrows(NullPointerException.class, () -> Lexer.from("(f)oo").or(null));
   }
 
-  
+
   @Tag("Q5") @Test
   public void testWith() {
     var lexer = Lexer.<Integer>create().with("(9)X?X?", Integer::parseInt);
@@ -281,8 +280,9 @@ public class LexerTest {
         () -> assertTrue(lexer.tryParse("XXX").isEmpty())
         );
   }
-  
 
+
+  /*
   @Tag("Q6") @Test
   public void testFromTwoLists() {
     var lexer = Lexer.from(
