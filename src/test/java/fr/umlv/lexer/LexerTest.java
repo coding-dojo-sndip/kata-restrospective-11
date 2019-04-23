@@ -109,7 +109,6 @@ public class LexerTest {
   }
 
 
-  /*
   @Tag("Q3") @Test
   public void testMapRecognized() {
     assertAll(
@@ -139,13 +138,14 @@ public class LexerTest {
     var lexer = Lexer.from("([0-9]+)").map(Integer::parseInt);
     assertEquals("1111", lexer.map((Object o) -> o.toString()).tryParse("1111").orElseThrow());
   }
-  @Tag("Q3") @Test 
+  @Tag("Q3") @Test
   public void testMapSignature2() {
     Lexer<Object> lexer = Lexer.from("([0-9]+)").map(Integer::parseInt);
     assertEquals(747, (int)lexer.tryParse("747").orElseThrow());
   }
-  
-  
+
+
+  /*
   @Tag("Q4") @Test
   public void testOr() {
     var lexer = Lexer.from("([0-9]+)").or(Lexer.from("([a-z_]+)"));
